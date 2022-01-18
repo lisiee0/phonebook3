@@ -31,13 +31,13 @@
 				<td>${pl.company}</td>
 			</tr>
 			<tr>
-				<td><a href="/phonebook2/pbc?action=updateForm&id=${pl.personId}}">수정</a></td>
-				<td><a href="/phonebook2/pbc?action=delete&id=${pl.personId}">삭제</a></td>
+				<td><a href="/phonebook3/phone/updateForm?id=${pl.personId}">수정</a></td>
+				<td><a href="/phonebook3/phone/delete?id=${pl.personId}">삭제</a></td>
 			</tr>
 		</table>
 		<br>
 	</c:forEach>
 
-	<a href="http://localhost:8088/phonebook2/pbc?action=writeForm">추가번호 등록</a>
+	<a href="/phonebook3/phone/writeForm">추가번호 등록</a>
 </body>
 </html>
