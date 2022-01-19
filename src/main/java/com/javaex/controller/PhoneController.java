@@ -74,13 +74,10 @@ public class PhoneController {
 	
 	
 	@RequestMapping("/update")
-	public String update(@RequestParam("personId") int id, @ModelAttribute PhoneVo vo) {
+	public String update(@ModelAttribute PhoneVo vo) {
 		System.out.println("PhoneController/update");
-		System.out.println(id);
 		
 		PhoneDao pd= new PhoneDao();
-		PhoneVo pv= pd.getPerson(id);
-
 		pd.personUpdate(vo);
 		
 		return "redirect:/phone/list";	
