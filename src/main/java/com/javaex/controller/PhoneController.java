@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.annotation.RequestScope;
 
 import com.javaex.dao.PhoneDao;
 import com.javaex.vo.PhoneVo;
@@ -83,7 +83,23 @@ public class PhoneController {
 		return "redirect:/phone/list";	
 	}
 	
+	@RequestMapping(value= "/test", method= {RequestMethod.GET, RequestMethod.POST})
+	public String test(@RequestParam(value= "name") String name, 
+					   @RequestParam(value= "age", required= false, defaultValue= "-1") int age) {
+		
+		System.out.println(name);
+		System.out.println(age);
+		
+		return "";
+	}
 	
+	@RequestMapping(value= "/view/{no}", method= {RequestMethod.GET, RequestMethod.POST})
+	public String view(@PathVariable("no") int no) {
+		
+		System.out.println(no+"번 게시글 가져오기");
+		
+		return "";
+	}
 	
 	/*
 	@RequestMapping(value= "/write", method= {RequestMethod.GET,RequestMethod.POST})
