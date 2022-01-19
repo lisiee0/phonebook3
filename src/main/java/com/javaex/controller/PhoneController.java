@@ -17,6 +17,8 @@ import com.javaex.vo.PhoneVo;
 @RequestMapping(value= "/phone")
 public class PhoneController {
 	
+	private PhoneDao pd= new PhoneDao();
+	
 	@RequestMapping(value= "/writeForm", method= {RequestMethod.GET, RequestMethod.POST})
 	public String writeForm() {
 		System.out.println("PhoneController/writeForm()");
@@ -29,7 +31,6 @@ public class PhoneController {
 	public String write(@ModelAttribute PhoneVo vo) {		
 		System.out.println("PhoneController/write()");
 
-		PhoneDao pd= new PhoneDao();
 		pd.personInsert(vo);
 		
 		return "redirect:/phone/list";
@@ -41,7 +42,6 @@ public class PhoneController {
 		System.out.println("PhoneController/list()");
 		
 		// Dao에서 list 가져오기
-		PhoneDao pd= new PhoneDao();
 		List<PhoneVo> pList= pd.getPersonList();
 		
 		// Controller --> DispatcherServlet 데이터 보내기 (model)
@@ -53,8 +53,7 @@ public class PhoneController {
 	@RequestMapping("/delete")
 	public String delete(@RequestParam("id") int id) {
 		System.out.println("PhoneController/delete()");
-		
-		PhoneDao pd= new PhoneDao();
+
 		pd.personDelete(id);
 
 		return "redirect:/phone/list";
@@ -63,8 +62,7 @@ public class PhoneController {
 	@RequestMapping("/updateForm")
 	public String updateForm(@RequestParam("id") int id, Model model) {
 		System.out.println("PhoneController/updateForm");
-		
-		PhoneDao pd= new PhoneDao();
+
 		PhoneVo vo= pd.getPerson(id);
 		
 		model.addAttribute("vo", vo);
@@ -76,12 +74,15 @@ public class PhoneController {
 	@RequestMapping("/update")
 	public String update(@ModelAttribute PhoneVo vo) {
 		System.out.println("PhoneController/update");
-		
-		PhoneDao pd= new PhoneDao();
+
 		pd.personUpdate(vo);
 		
 		return "redirect:/phone/list";	
 	}
+	
+	
+	/*******************************************************************************/
+	
 	
 	@RequestMapping(value= "/test", method= {RequestMethod.GET, RequestMethod.POST})
 	public String test(@RequestParam(value= "name") String name, 
