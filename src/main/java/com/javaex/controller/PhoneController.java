@@ -21,7 +21,7 @@ public class PhoneController {
 	public String writeForm() {
 		System.out.println("PhoneController/writeForm()");
 		
-		return "/WEB-INF/views/writeForm.jsp";
+		return "writeForm";
 	}
 
 	
@@ -47,7 +47,7 @@ public class PhoneController {
 		// Controller --> DispatcherServlet 데이터 보내기 (model)
 		model.addAttribute("pl", pList);
 
-		return "/WEB-INF/views/list.jsp";
+		return "list";
 	}
 	
 	@RequestMapping("/delete")
@@ -69,7 +69,7 @@ public class PhoneController {
 		
 		model.addAttribute("vo", vo);
 		
-		return "/WEB-INF/views/updateForm.jsp";	
+		return "updateForm";	
 	}
 	
 	
